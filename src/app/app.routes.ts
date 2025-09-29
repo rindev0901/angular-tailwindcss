@@ -1,24 +1,22 @@
 import { Routes } from '@angular/router';
 import { Home, Login, NotFound, Callback } from './pages';
-import { authenticatedGuard, unauthenticatedGuard } from './guards/authenticated-guard';
+import { authGuard, unAuthGuard } from './guards/authenticated-guard';
 
 export const routes: Routes = [
   {
     path: '',
     component: Home,
-    canActivate: [authenticatedGuard],
+    canActivate: [authGuard],
   },
   {
     path: 'login',
     component: Login,
-    canActivate: [unauthenticatedGuard],
-    redirectTo: '',
+    canActivate: [unAuthGuard],
   },
   {
     path: 'auth/callback',
     component: Callback,
-    canActivate: [unauthenticatedGuard],
-    redirectTo: '',
+    canActivate: [unAuthGuard],
   },
   { path: '**', component: NotFound },
 ];
