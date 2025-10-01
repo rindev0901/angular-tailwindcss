@@ -1,10 +1,10 @@
 import { Component, signal, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './login.html',
   styles: ``,
 })
@@ -71,5 +71,9 @@ export class Login {
     console.log('Sign in with GitHub clicked');
     // Implement GitHub OAuth integration
     this.error.set('GitHub sign-in coming soon!');
+  }
+
+  protected navigateToSignUp() {
+    this.router.navigate(['/sign-up']);
   }
 }

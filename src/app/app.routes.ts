@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { Home, Login, NotFound, Callback } from './pages';
+import { Home, Login, NotFound, Callback, SignUp } from './pages';
 
 export const routes: Routes = [
   {
@@ -9,6 +9,10 @@ export const routes: Routes = [
   {
     path: 'login',
     component: Login,
+  },
+  {
+    path: 'register',
+    component: SignUp,
   },
   {
     path: 'auth/callback',
