@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* Prevent scroll when mobile menu is open */
 body.menu-open {
@@ -12,4 +12,7 @@ body.menu-open {
 /* Ensure smooth transitions */
 body {
   transition: all 0.3s ease-in-out;
+}
+.toast-container .ngx-toastr {
+  width: unset !important;
 }

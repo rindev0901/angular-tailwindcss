@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, signal, inject, computed } from '@angular/core';
 import {
   FormGroup,
@@ -8,6 +9,7 @@ import {
   ValidationErrors,
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '@app/core/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -19,22 +21,7 @@ import { ToastrService } from 'ngx-toastr';
 export class SignUp {
   private router = inject(Router);
   private toastr = inject(ToastrService);
-  // Custom Validators
-  passwordStrengthValidator(control: AbstractControl): ValidationErrors | null {
-    const password = control.value;
-    if (!password) return null;
-
-    let strength = 0;
-    if (password.length >= 8) strength++;
-    if (/[a-z]/.test(password)) strength++;
-    if (/[A-Z]/.test(password)) strength++;
-    if (/[0-9]/.test(password)) strength++;
-    if (/[^A-Za-z0-9]/.test(password)) strength++;
-
-    return strength < 3
-      ? { weakPassword: { requiredStrength: 3, actualStrength: strength } }
-      : null;
-  }
+  private authService = inject(AuthService);
 
   confirmPasswordValidator(control: AbstractControl): ValidationErrors | null {
     if (!control.parent) return null;
@@ -55,12 +42,12 @@ export class SignUp {
       Validators.pattern(/^[a-zA-Z\s]+$/),
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, this.passwordStrengthValidator]),
+    password: new FormControl('', [Validators.required]),
     confirmPassword: new FormControl('', [Validators.required, this.confirmPasswordValidator]),
     agreeToTerms: new FormControl(false, [Validators.requiredTrue]),
   });
 
-  constructor(private toastrService: ToastrService) {
+  constructor() {
     // Subscribe to password changes to update the signal
     this.password?.valueChanges.subscribe((value) => {
       this.passwordValue.set(value || '');
@@ -143,8 +130,8 @@ export class SignUp {
   });
 
   // Helper methods for template access
-  protected loading = computed(() => this.uiState().loading);
-  protected success = computed(() => this.uiState().success);
+  protected loading = () => this.uiState().loading;
+  protected success = () => this.uiState().success;
 
   // Error message helpers for each field
   protected getFieldError(fieldName: string): string {
@@ -201,60 +188,65 @@ export class SignUp {
     // Set loading state
     this.uiState.update((state) => ({ ...state, loading: true }));
 
+    // Show loading toast
+    const loadingToast = this.toastr.info('Creating your account...', 'Please Wait', {
+      timeOut: 0,
+      extendedTimeOut: 0,
+      progressBar: false,
+      tapToDismiss: false,
+      closeButton: false,
+    });
+
     // Get form values
     const formValue = this.signUpForm.value;
 
-    // Show loading toast
-    this.toastr.info(
-      'Creating your account...',
-      'Please Wait',
-      {
-        timeOut: 0,
-        extendedTimeOut: 0,
-        progressBar: false,
-        tapToDismiss: false,
-        closeButton: false,
-      }
-    );
+    this.authService
+      .registerEmail({
+        email: formValue.email!,
+        name: formValue.fullName!,
+        password: formValue.password!,
+      })
+      .subscribe({
+        next: (response) => {
+          // Clear the loading toast
+          loadingToast.toastRef.close();
 
-    // Simulate API call
-    setTimeout(() => {
-      // Clear the loading toast
-      this.toastr.clear();
+          // Success - registration completed
+          this.uiState.update((state) => ({ ...state, loading: false }));
 
-      // Mock registration logic
-      if (formValue.email === 'test@example.com') {
-        // Set email field error
-        this.email?.setErrors({ emailExists: true });
-        this.uiState.update((state) => ({ ...state, loading: false }));
+          this.toastr.success(
+            `Welcome aboard, ${formValue.fullName}! Your account has been created successfully. Redirecting you to the login page...`,
+            'Account Created!',
+            {
+              timeOut: 4000,
+              progressBar: true,
+            }
+          );
+          // Redirect to login page after success
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 2000);
+        },
+        error: (err) => {
+          // Clear the loading toast
+          loadingToast.toastRef.close();
 
-        this.toastr.error(
-          'This email address is already registered. Please use a different email or sign in instead.',
-          'Email Already Exists',
-          {
-            timeOut: 7000,
-            progressBar: true,
+          if (err instanceof HttpErrorResponse) {
+            this.toastr.error(err.error?.message || 'Unknown error', err.error?.code, {
+              timeOut: 6000,
+              progressBar: true,
+            });
+          } else {
+            this.toastr.error('An unexpected error occurred. Please try again.', 'Error', {
+              timeOut: 6000,
+              progressBar: true,
+            });
           }
-        );
-      } else {
-        // Success
-        this.uiState.update((state) => ({ ...state, loading: false }));
 
-        this.toastr.success(
-          `Welcome aboard, ${formValue.fullName}! Your account has been created successfully. Redirecting you to the login page...`,
-          'Account Created!',
-          {
-            timeOut: 4000,
-            progressBar: true,
-          }
-        );
-
-        // Redirect to login page after success
-        setTimeout(() => {
-          this.router.navigate(['/login']);
-        }, 2000);
-      }
-    }, 2000);
+          // Reset loading state
+          this.uiState.update((state) => ({ ...state, loading: false }));
+        },
+      });
   }
 
   protected togglePasswordVisibility() {

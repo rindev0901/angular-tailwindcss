@@ -19,6 +19,7 @@
       "@app/*": ["app/*"],
       "@environments/*": ["environments/*"],
       "@pages/*": ["app/pages/*"],
+      "@core/*": ["app/core/*"],
     }
   },
   "angularCompilerOptions": {

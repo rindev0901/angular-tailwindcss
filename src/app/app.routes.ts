@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { Home, Login, NotFound, Callback, SignUp } from './pages';
+import { Home, Login, NotFound, SignUp } from './pages';
 
 export const routes: Routes = [
   {
@@ -13,10 +13,6 @@ export const routes: Routes = [
   {
     path: 'register',
     component: SignUp,
-  },
-  {
-    path: 'auth/callback',
-    component: Callback,
   },
   { path: '**', component: NotFound },
 ];
