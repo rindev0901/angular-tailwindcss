@@ -13,6 +13,6 @@ body.menu-open {
 body {
   transition: all 0.3s ease-in-out;
 }
-.toast-container .ngx-toastr {
-  width: unset !important;
+.toast-container .ngx-toastr > * {
+  @apply truncate;
 }
