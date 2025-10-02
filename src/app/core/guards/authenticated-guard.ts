@@ -1,31 +1,32 @@
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { AuthService } from '@core/services/auth.service';
 
-// export const authGuard = () => {
-//   const auth = inject(AuthService);
-//   const router = inject(Router);
+export const authGuard = () => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
 
-//   return auth.isAuthenticated$.pipe(
-//     map((isLoggedIn) => {
-//       if (isLoggedIn) {
-//         return true;
-//       }
-//       return router.createUrlTree(['/login']);
-//     })
-//   );
-// };
+  return authService.getSession().pipe(
+    map((session) => {
+      if (session) {
+        return true;
+      }
+      return router.createUrlTree(['/login']);
+    })
+  );
+};
 
-// export const unAuthGuard = () => {
-//   const auth = inject(AuthService);
-//   const router = inject(Router);
+export const unAuthGuard = () => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
 
-//   return auth.isAuthenticated$.pipe(
-//     map((isLoggedIn) => {
-//       if (!isLoggedIn) {
-//         return true;
-//       }
-//       return router.createUrlTree(['/']);
-//     })
-//   );
-// };
+  return authService.getSession().pipe(
+    map((session) => {
+      if (!session) {
+        return true;
+      }
+      return router.createUrlTree(['/']);
+    })
+  );
+};

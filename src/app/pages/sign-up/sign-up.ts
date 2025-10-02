@@ -223,9 +223,7 @@ export class SignUp {
             }
           );
           // Redirect to login page after success
-          setTimeout(() => {
-            this.router.navigate(['/login']);
-          }, 2000);
+          this.router.navigate(['/login']);
         },
         error: (err) => {
           // Clear the loading toast

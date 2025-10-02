@@ -8,6 +8,8 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "exactOptionalPropertyTypes":true,
+    "noUncheckedIndexedAccess":true,
     "skipLibCheck": true,
     "isolatedModules": true,
     "experimentalDecorators": true,
