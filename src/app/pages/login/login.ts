@@ -89,6 +89,7 @@ export class Login {
       .loginEmail({
         email: formValue.email!,
         password: formValue.password!,
+        rememberMe: formValue.rememberMe!,
       })
       .subscribe({
         next: (response) => {
