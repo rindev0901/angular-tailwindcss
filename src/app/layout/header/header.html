@@ -1,87 +1,189 @@
 @let open = isMobileMenuOpen();
 
 <!-- Header -->
-<header class="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-[100]">
+<header class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-[100]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <!-- Logo -->
       <div class="flex items-center">
         <div class="flex-shrink-0">
           <a [routerLink]="'/'" class="flex items-center space-x-2">
-            <div
-              class="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center"
-            >
-              <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"
-                />
-              </svg>
-            </div>
-            <span class="text-xl font-bold text-gray-900">App</span>
+            <!-- TopCV Style Logo -->
+            <span class="text-2xl font-bold">
+              <span class="text-emerald-600">top</span><span class="text-gray-800">cv</span>
+            </span>
           </a>
         </div>
       </div>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden md:flex space-x-8">
+      <nav class="hidden lg:flex items-center space-x-8">
+        <div class="relative group">
+          <button
+            class="flex items-center space-x-1 text-gray-700 hover:text-emerald-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+          >
+            <span>Việc làm</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="relative group">
+          <button
+            class="flex items-center space-x-1 text-gray-700 hover:text-emerald-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+          >
+            <span>Tạo CV</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="relative group">
+          <button
+            class="flex items-center space-x-1 text-gray-700 hover:text-emerald-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+          >
+            <span>Công cụ</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="relative group">
+          <button
+            class="flex items-center space-x-1 text-gray-700 hover:text-emerald-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+          >
+            <span>Cẩm nang nghề nghiệp</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+        </div>
+
         <a
-          routerLink="/"
-          class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+          href="#"
+          class="flex items-center space-x-1 text-gray-700 hover:text-emerald-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
         >
-          Home
-        </a>
-        <a
-          routerLink="/about"
-          class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-        >
-          About
-        </a>
-        <a
-          routerLink="/services"
-          class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-        >
-          Services
-        </a>
-        <a
-          routerLink="/contact"
-          class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-        >
-          Contact
+          <span>TopCV</span>
+          <span class="bg-orange-500 text-white text-xs px-1.5 py-0.5 rounded font-semibold"
+            >Pro</span
+          >
         </a>
       </nav>
 
       <!-- User Menu -->
-      <div class="hidden md:flex items-center space-x-4">
+      <div class="hidden md:flex items-center space-x-3">
         @if (userProfile(); as user) {
         <!-- Logged In User -->
-        <div class="flex items-center space-x-3">
-          <div class="flex items-center space-x-2">
-            <div
-              class="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center"
-            >
-              <span class="text-white text-sm font-medium">
-                {{ (user.name || user.email)?.charAt(0)?.toUpperCase() }}
-              </span>
-            </div>
-            <span class="text-gray-700 text-sm font-medium">{{ user.name || user.email }}</span>
-          </div>
+        <div class="flex items-center space-x-4">
+          <!-- Notifications -->
           <button
-            type="button"
-            class="text-gray-500 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-            (click)="logout()"
+            class="relative p-2 text-gray-400 hover:text-gray-600 transition-colors duration-200"
           >
-            Sign Out
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+              />
+            </svg>
+            <div class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
           </button>
+
+          <!-- User Profile Dropdown -->
+          <div class="relative group">
+            <button
+              class="flex items-center space-x-2 text-gray-700 hover:text-emerald-600 transition-colors duration-200"
+            >
+              <div
+                class="w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center"
+              >
+                <span class="text-white text-sm font-medium">
+                  {{ (user.name || user.email)?.charAt(0)?.toUpperCase() }}
+                </span>
+              </div>
+              <span class="text-sm font-medium">{{ user.name || user.email }}</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div
+              class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+            >
+              <div class="py-2">
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                  >Thông tin cá nhân</a
+                >
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                  >CV của tôi</a
+                >
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                  >Việc làm đã ứng tuyển</a
+                >
+                <div class="border-t border-gray-100 my-1"></div>
+                <button
+                  (click)="logout()"
+                  class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+                >
+                  Đăng xuất
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
         } @else {
         <!-- Not Logged In -->
-        <button
-          type="button"
-          class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
-          (click)="navigateToLogin()"
-        >
-          Sign In
-        </button>
+        <div class="flex items-center space-x-3">
+          <button
+            type="button"
+            class="text-emerald-600 hover:text-emerald-700 px-4 py-2 text-sm font-medium transition-colors duration-200 border border-emerald-600 rounded-lg hover:bg-emerald-50"
+            (click)="navigateToRegister()"
+          >
+            Đăng ký
+          </button>
+          <button
+            type="button"
+            class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+            (click)="navigateToLogin()"
+          >
+            Đăng nhập
+          </button>
+          <button
+            class="text-gray-700 hover:text-emerald-600 text-sm font-medium transition-colors duration-200"
+          >
+            Đăng tuyển & tìm hồ sơ
+          </button>
+        </div>
         }
       </div>
 
@@ -132,31 +234,39 @@
   <div class="px-2 pt-2 pb-3 space-y-1">
     <a
       routerLink="/"
-      class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+      class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-colors duration-200"
       (click)="closeMobileMenu()"
     >
-      Home
+      Việc làm
     </a>
     <a
-      routerLink="/about"
-      class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+      routerLink="/cv-builder"
+      class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-colors duration-200"
       (click)="closeMobileMenu()"
     >
-      About
+      Tạo CV
     </a>
     <a
-      routerLink="/services"
-      class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+      routerLink="/tools"
+      class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-colors duration-200"
       (click)="closeMobileMenu()"
     >
-      Services
+      Công cụ
     </a>
     <a
-      routerLink="/contact"
-      class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+      routerLink="/career-guide"
+      class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-colors duration-200"
       (click)="closeMobileMenu()"
     >
-      Contact
+      Cẩm nang nghề nghiệp
+    </a>
+    <a
+      routerLink="/pro"
+      class="flex items-center space-x-2 px-3 py-2 text-base font-medium text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-colors duration-200"
+      (click)="closeMobileMenu()"
+    >
+      <span>TopCV Pro</span>
+      <span class="bg-orange-500 text-white text-xs px-1.5 py-0.5 rounded font-semibold">Pro</span>
     </a>
     <div class="pt-4 pb-2 border-t border-gray-200">
       @if (userProfile(); as user) {
@@ -164,7 +274,7 @@
       <div class="space-y-3">
         <div class="flex items-center space-x-3 px-3 py-2">
           <div
-            class="w-10 h-10 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center"
+            class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center"
           >
             <span class="text-white font-medium">
               {{ (user.name || user.email)?.charAt(0)?.toUpperCase() }}
@@ -175,21 +285,48 @@
             <p class="text-gray-500 text-xs">{{ user.email }}</p>
           </div>
         </div>
+
+        <!-- Mobile Menu Items -->
+        <div class="space-y-1">
+          <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-emerald-50 rounded-md">
+            Thông tin cá nhân
+          </a>
+          <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-emerald-50 rounded-md">
+            CV của tôi
+          </a>
+          <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-emerald-50 rounded-md">
+            Việc làm đã ứng tuyển
+          </a>
+        </div>
+
         <button
           class="w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
           (click)="logout()"
         >
-          Sign Out
+          Đăng xuất
         </button>
       </div>
       } @else {
       <!-- Not Logged In - Mobile -->
-      <button
-        class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
-        (click)="navigateToLogin()"
-      >
-        Sign In
-      </button>
+      <div class="space-y-2">
+        <button
+          class="w-full text-emerald-600 hover:text-emerald-700 px-4 py-2 text-sm font-medium transition-colors duration-200 border border-emerald-600 rounded-lg hover:bg-emerald-50"
+          (click)="navigateToRegister()"
+        >
+          Đăng ký
+        </button>
+        <button
+          class="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+          (click)="navigateToLogin()"
+        >
+          Đăng nhập
+        </button>
+        <button
+          class="w-full text-gray-700 hover:text-emerald-600 text-sm font-medium transition-colors duration-200 py-2"
+        >
+          Đăng tuyển & tìm hồ sơ
+        </button>
+      </div>
       }
     </div>
   </div>

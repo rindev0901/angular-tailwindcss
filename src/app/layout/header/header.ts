@@ -44,6 +44,10 @@ export class Header {
     this.router.navigate(['/login']).then(() => this.isMobileMenuOpen.set(false));
   }
 
+  protected navigateToRegister() {
+    this.router.navigate(['/register']).then(() => this.isMobileMenuOpen.set(false));
+  }
+
   protected logout() {
     this.authService.logout().subscribe({
       next: () => {
