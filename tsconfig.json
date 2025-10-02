@@ -10,18 +10,19 @@
     "noFallthroughCasesInSwitch": true,
     "exactOptionalPropertyTypes":true,
     "noUncheckedIndexedAccess":true,
+    "ignoreDeprecations": "6.0",
     "skipLibCheck": true,
     "isolatedModules": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES2022",
     "module": "preserve",
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "@app/*": ["app/*"],
-      "@environments/*": ["environments/*"],
-      "@pages/*": ["app/pages/*"],
-      "@core/*": ["app/core/*"],
+      "@app/*": ["src/app/*"],
+      "@environments/*": ["src/environments/*"],
+      "@pages/*": ["src/app/pages/*"],
+      "@core/*": ["src/app/core/*"]
     }
   },
   "angularCompilerOptions": {
