@@ -2,6 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Component, computed, effect, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '@app/core/services/auth.service';
+import { LoadingService } from '@app/core/services/loading.service';
 
 @Component({
   selector: 'app-header',
@@ -12,10 +13,17 @@ export class Header {
   private platformId = inject(PLATFORM_ID);
   private readonly router = inject(Router);
   private readonly authService = inject(AuthService);
+  private readonly loadingService = inject(LoadingService);
   protected readonly isMobileMenuOpen = signal(false);
 
-
-  protected userProfile = computed(() => this.authService.session()?.user)
+  protected userProfile = computed(() => this.authService.session()?.user);
+  protected isAuthLoading = computed(() => this.authService.isLoading);
+  protected isSessionLoading = computed(() =>
+    this.loadingService.isComponentLoading('auth-session') || this.authService.isLoading
+  );
+  protected isLogoutLoading = computed(() =>
+    this.loadingService.isComponentLoading('auth-logout')
+  );
 
   constructor() {
     // Effect to handle body scroll when mobile menu state changes
@@ -49,12 +57,15 @@ export class Header {
   }
 
   protected logout() {
+    this.loadingService.startComponentLoading('auth-logout', 'Signing you out...');
     this.authService.logout().subscribe({
       next: () => {
+        this.loadingService.stopComponentLoading('auth-logout');
         this.router.navigate(['/login']).then(() => this.isMobileMenuOpen.set(false));
       },
       error: (err: any) => {
         console.error('Logout failed:', err);
+        this.loadingService.stopComponentLoading('auth-logout');
         this.router.navigate(['/login']).then(() => this.isMobileMenuOpen.set(false));
       },
     });

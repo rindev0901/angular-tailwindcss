@@ -2,7 +2,11 @@
 
 <!-- Header -->
 <header class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-[100]">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <!-- Loading bar -->
+    @if (isSessionLoading()) {
+      <div class="absolute -top-px left-0 right-0 h-0.5 bg-emerald-600 animate-pulse"></div>
+    }
     <div class="flex justify-between items-center h-16">
       <!-- Logo -->
       <div class="flex items-center">
@@ -17,7 +21,7 @@
       </div>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex items-center space-x-8">
+      <nav class="hidden lg:flex items-center space-x-8" [class.opacity-75]="isSessionLoading()">
         <div class="relative group">
           <button
             class="flex items-center space-x-1 text-gray-700 hover:text-emerald-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
@@ -95,7 +99,20 @@
 
       <!-- User Menu -->
       <div class="hidden md:flex items-center space-x-3">
-        @if (userProfile(); as user) {
+        @if (isSessionLoading()) {
+        <!-- Loading State -->
+        <div class="flex items-center space-x-3">
+          <!-- Notification skeleton -->
+          <div class="animate-pulse">
+            <div class="w-9 h-9 bg-gray-200 rounded-full"></div>
+          </div>
+          <!-- User profile skeleton -->
+          <div class="animate-pulse flex items-center space-x-2">
+            <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
+            <div class="h-4 bg-gray-200 rounded w-10"></div>
+          </div>
+        </div>
+        } @else if (userProfile(); as user) {
         <!-- Logged In User -->
         <div class="flex items-center space-x-4">
           <!-- Notifications -->
@@ -153,9 +170,15 @@
                 <div class="border-t border-gray-100 my-1"></div>
                 <button
                   (click)="logout()"
-                  class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+                  [disabled]="isLogoutLoading()"
+                  class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
                 >
-                  Đăng xuất
+                  @if (isLogoutLoading()) {
+                    <div class="animate-spin rounded-full h-3 w-3 border border-red-600 border-t-transparent"></div>
+                    <span>Đang đăng xuất...</span>
+                  } @else {
+                    <span>Đăng xuất</span>
+                  }
                 </button>
               </div>
             </div>
@@ -269,7 +292,22 @@
       <span class="bg-orange-500 text-white text-xs px-1.5 py-0.5 rounded font-semibold">Pro</span>
     </a>
     <div class="pt-4 pb-2 border-t border-gray-200">
-      @if (userProfile(); as user) {
+      @if (isSessionLoading()) {
+      <!-- Loading State - Mobile -->
+      <div class="space-y-3">
+        <div class="flex items-center space-x-3 px-3 py-2">
+          <div class="animate-pulse w-10 h-10 bg-gray-200 rounded-full"></div>
+          <div class="animate-pulse flex-1 space-y-2">
+            <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+            <div class="h-3 bg-gray-200 rounded w-1/2"></div>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <div class="animate-pulse h-8 bg-gray-200 rounded-lg mx-3"></div>
+          <div class="animate-pulse h-8 bg-gray-200 rounded-lg mx-3"></div>
+        </div>
+      </div>
+      } @else if (userProfile(); as user) {
       <!-- Logged In User - Mobile -->
       <div class="space-y-3">
         <div class="flex items-center space-x-3 px-3 py-2">
@@ -300,10 +338,16 @@
         </div>
 
         <button
-          class="w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+          class="w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+          [disabled]="isLogoutLoading()"
           (click)="logout()"
         >
-          Đăng xuất
+          @if (isLogoutLoading()) {
+            <div class="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
+            <span>Đang đăng xuất...</span>
+          } @else {
+            <span>Đăng xuất</span>
+          }
         </button>
       </div>
       } @else {
