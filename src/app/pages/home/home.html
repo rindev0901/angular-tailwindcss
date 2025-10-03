@@ -1,7 +1,9 @@
 @let uiData = uiState();
 
 <!-- Hero Section -->
-<section class="bg-gradient-to-br from-emerald-600 via-teal-700 to-cyan-800 text-white py-16 relative overflow-hidden">
+<section
+  class="bg-gradient-to-br from-emerald-600 via-teal-700 to-cyan-800 text-white py-16 relative overflow-hidden"
+>
   <!-- Background Pattern -->
   <div class="absolute inset-0 opacity-30">
     <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-white/10"></div>
@@ -45,8 +47,18 @@
                 <option value="can-tho">Cần Thơ</option>
               </select>
               <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                <svg
+                  class="w-4 h-4 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
                 </svg>
               </div>
             </div>
@@ -57,24 +69,35 @@
             class="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center space-x-2"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
             </svg>
             <span>Tìm kiếm</span>
           </button>
         </div>
-
-
       </div>
 
       <!-- Right Content - Video/Image -->
       <div class="relative">
-        <div class="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-          <div class="aspect-video bg-gradient-to-br from-emerald-400 to-teal-600 rounded-xl flex items-center justify-center relative overflow-hidden">
+        <div
+          class="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/20"
+        >
+          <div
+            class="aspect-video bg-gradient-to-br from-emerald-400 to-teal-600 rounded-xl flex items-center justify-center relative overflow-hidden"
+          >
             <!-- Play Button -->
-            <button class="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors duration-200 group">
-              <div class="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+            <button
+              class="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors duration-200 group"
+            >
+              <div
+                class="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200"
+              >
                 <svg class="w-6 h-6 text-emerald-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
+                  <path d="M8 5v14l11-7z" />
                 </svg>
               </div>
             </button>
@@ -98,15 +121,21 @@
     <!-- Stats -->
     <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
       <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-        <div class="text-3xl font-bold text-emerald-300">{{ formatNumber(jobStats.activeJobs) }}</div>
+        <div class="text-3xl font-bold text-emerald-300">
+          {{ formatNumber(jobStats.activeJobs) }}
+        </div>
         <div class="text-emerald-100 mt-2">Việc làm đang tuyển</div>
       </div>
       <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-        <div class="text-3xl font-bold text-emerald-300">{{ formatNumber(jobStats.newJobsToday) }}</div>
+        <div class="text-3xl font-bold text-emerald-300">
+          {{ formatNumber(jobStats.newJobsToday) }}
+        </div>
         <div class="text-emerald-100 mt-2">Việc làm mới hôm nay</div>
       </div>
       <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-        <div class="text-3xl font-bold text-emerald-300">{{ formatNumber(jobStats.companies) }}</div>
+        <div class="text-3xl font-bold text-emerald-300">
+          {{ formatNumber(jobStats.companies) }}
+        </div>
         <div class="text-emerald-100 mt-2">Công ty đang tuyển</div>
       </div>
     </div>
@@ -121,36 +150,63 @@
         <h2 class="text-2xl font-bold text-gray-900 mb-2">Danh mục phổ biến</h2>
         <p class="text-gray-600">Khám phá các ngành nghề hot nhất hiện nay</p>
       </div>
-      <div class="flex items-center space-x-4">
-        <button
-          (click)="showAllCategories()"
-          class="hidden md:flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 font-medium text-sm transition-colors duration-200"
-        >
-          <span>Xem tất cả</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-          </svg>
-        </button>
-                </div>
+      <div class="space-y-2">
+        <div class="flex items-center space-x-4">
+          <button
+            (click)="showAllCategories()"
+            class="hidden md:flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 font-medium text-sm transition-colors duration-200"
+          >
+            <span>Xem tất cả</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
+        </div>
         <div class="hidden lg:flex space-x-2">
-        <button
-          (click)="previousCategory()"
-          [disabled]="currentCategoryIndex() === 0"
-          class="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-          </svg>
-        </button>
-        <button
-          (click)="nextCategory()"
-          [disabled]="currentCategoryIndex() >= getMaxCategoryIndex()"
-          class="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-          </svg>
-        </button>
+          <button
+            (click)="previousCategory()"
+            [disabled]="currentCategoryIndex() === 0"
+            class="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <svg
+              class="w-5 h-5 text-gray-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+          <button
+            (click)="nextCategory()"
+            [disabled]="currentCategoryIndex() >= getMaxCategoryIndex()"
+            class="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <svg
+              class="w-5 h-5 text-gray-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -162,35 +218,43 @@
           [style.transform]="getCarouselTransform()"
         >
           @for (category of jobCategories; track category.id) {
-            <div class="flex-shrink-0 w-1/2 md:w-1/3 lg:w-1/5 px-2">
-              <button
-                (click)="selectCategory(category)"
-                class="w-full bg-white border border-gray-200 hover:border-emerald-300 hover:shadow-md rounded-xl p-4 text-left transition-all duration-200 hover:scale-105 group"
-              >
-                <div class="flex items-center space-x-3">
-                  <div class="w-12 h-12 bg-emerald-50 group-hover:bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors">
-                    <span class="text-xl">{{ category.icon }}</span>
+          <div class="flex-shrink-0 w-1/2 md:w-1/3 lg:w-1/5 px-2">
+            <button
+              (click)="selectCategory(category)"
+              class="w-full bg-white border border-gray-200 hover:border-emerald-300 hover:shadow-md rounded-xl p-4 text-left transition-all duration-200 hover:scale-105 group"
+            >
+              <div class="flex items-center space-x-3">
+                <div
+                  class="w-12 h-12 bg-emerald-50 group-hover:bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors"
+                >
+                  <span class="text-xl">{{ category.icon }}</span>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="font-semibold text-gray-900 text-sm mb-1 truncate">
+                    {{ category.name }}
                   </div>
-                  <div class="min-w-0 flex-1">
-                    <div class="font-semibold text-gray-900 text-sm mb-1 truncate">{{ category.name }}</div>
-                    <div class="text-xs text-emerald-600 font-medium">{{ formatNumber(category.count) }} việc làm</div>
+                  <div class="text-xs text-emerald-600 font-medium">
+                    {{ formatNumber(category.count) }} việc làm
                   </div>
                 </div>
-              </button>
-            </div>
+              </div>
+            </button>
+          </div>
           }
         </div>
       </div>
 
       <div class="flex items-center justify-center mt-6 space-x-4">
-        <span class="text-gray-500 text-sm">{{ currentCategoryIndex() + 1 }}/{{ getTotalSlides() }}</span>
+        <span class="text-gray-500 text-sm"
+          >{{ currentCategoryIndex() + 1 }}/{{ getTotalSlides() }}</span
+        >
         <div class="flex space-x-1">
           @for (slide of Array(getTotalSlides()).fill(0); track $index) {
-            <button
-              (click)="goToSlide($index)"
-              [class]="$index === currentCategoryIndex() ? 'bg-emerald-600' : 'bg-gray-300'"
-              class="w-2 h-2 rounded-full transition-colors duration-200"
-            ></button>
+          <button
+            (click)="goToSlide($index)"
+            [class]="$index === currentCategoryIndex() ? 'bg-emerald-600' : 'bg-gray-300'"
+            class="w-2 h-2 rounded-full transition-colors duration-200"
+          ></button>
           }
         </div>
       </div>
@@ -200,33 +264,49 @@
     <div class="md:hidden">
       <div class="grid grid-cols-2 gap-4">
         @for (category of jobCategories.slice(0, 8); track category.id) {
-          <button
-            (click)="selectCategory(category)"
-            class="bg-white border border-gray-200 hover:border-emerald-300 hover:shadow-md rounded-xl p-4 text-center transition-all duration-200"
-          >
-            <div class="flex flex-col items-center space-y-3">
-              <div class="w-12 h-12 bg-emerald-50 rounded-lg flex items-center justify-center">
-                <span class="text-xl">{{ category.icon }}</span>
+        <button
+          (click)="selectCategory(category)"
+          class="bg-white border border-gray-200 hover:border-emerald-300 hover:shadow-md rounded-xl p-4 text-center transition-all duration-200"
+        >
+          <div class="flex flex-col items-center space-y-3">
+            <div class="w-12 h-12 bg-emerald-50 rounded-lg flex items-center justify-center">
+              <span class="text-xl">{{ category.icon }}</span>
+            </div>
+            <div>
+              <div class="font-semibold text-gray-900 text-sm leading-tight">
+                {{ category.name }}
               </div>
-              <div>
-                <div class="font-semibold text-gray-900 text-sm leading-tight">{{ category.name }}</div>
-                <div class="text-xs text-emerald-600 font-medium mt-1">{{ formatNumber(category.count) }}</div>
+              <div class="text-xs text-emerald-600 font-medium mt-1">
+                {{ formatNumber(category.count) }}
               </div>
             </div>
-          </button>
+          </div>
+        </button>
         }
       </div>
 
       @if (jobCategories.length > 8) {
-        <button
-          (click)="showAllCategories()"
-          class="w-full mt-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-xl p-4 text-center transition-all duration-200"
+      <button
+        (click)="showAllCategories()"
+        class="w-full mt-4 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-xl p-4 text-center transition-all duration-200"
+      >
+        <span class="text-sm font-medium text-gray-700"
+          >Xem tất cả {{ jobCategories.length }} danh mục</span
         >
-          <span class="text-sm font-medium text-gray-700">Xem tất cả {{ jobCategories.length }} danh mục</span>
-          <svg class="w-4 h-4 text-gray-500 ml-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-          </svg>
-        </button>
+        <svg
+          class="w-4 h-4 text-gray-500 ml-2 inline"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
+      </button>
       }
     </div>
   </div>
@@ -242,18 +322,31 @@
         <div>
           <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Việc làm tốt nhất</h2>
           <div class="flex items-center space-x-2">
-            <svg class="w-4 h-4 md:w-5 md:h-5 text-emerald-600" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            <svg
+              class="w-4 h-4 md:w-5 md:h-5 text-emerald-600"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+              />
             </svg>
             <span class="text-gray-600 text-sm md:text-base">Tất cả đã xác thực</span>
           </div>
         </div>
 
         <!-- "Xem tất cả" button - Desktop only -->
-        <button class="hidden md:flex items-center space-x-1 text-emerald-600 hover:text-emerald-700 font-medium text-sm transition-colors duration-200">
+        <button
+          class="hidden md:flex items-center space-x-1 text-emerald-600 hover:text-emerald-700 font-medium text-sm transition-colors duration-200"
+        >
           <span>Xem tất cả</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         </button>
       </div>
@@ -271,12 +364,22 @@
             >
               <option value="">📍 Địa điểm</option>
               @for (location of popularLocations; track location.value) {
-                <option [value]="location.value">{{ location.label }}</option>
+              <option [value]="location.value">{{ location.label }}</option>
               }
             </select>
             <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              <svg
+                class="w-4 h-4 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </div>
           </div>
@@ -297,8 +400,18 @@
               <option value="thuong-luong">Thỏa thuận</option>
             </select>
             <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              <svg
+                class="w-4 h-4 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </div>
           </div>
@@ -318,8 +431,18 @@
               <option value="tren-5-nam">Trên 5 năm kinh nghiệm</option>
             </select>
             <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              <svg
+                class="w-4 h-4 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </div>
           </div>
@@ -341,8 +464,18 @@
               <option value="banking">Ngân hàng / Tài chính</option>
             </select>
             <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              <svg
+                class="w-4 h-4 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </div>
           </div>
@@ -357,36 +490,54 @@
               class="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-gray-700 whitespace-nowrap"
             >
               <span class="text-lg">📍</span>
-              <span class="text-sm">{{ selectedLocation() ? getLocationLabel(selectedLocation()) : 'Địa điểm' }}</span>
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              <span class="text-sm">{{
+                selectedLocation() ? getLocationLabel(selectedLocation()) : 'Địa điểm'
+              }}</span>
+              <svg
+                class="w-4 h-4 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </button>
             @if (showLocationDropdown()) {
-              <div class="absolute top-full left-0 mt-2 w-64 origin-top-left bg-white border border-gray-200 rounded-lg shadow-xl z-[9999] min-w-max">
-                <div class="p-2 max-h-64 overflow-y-auto custom-scrollbar">
-                  <button
-                    (click)="selectLocationAndClose('')"
-                    class="w-full text-left px-3 py-2 text-sm hover:bg-gray-100 rounded"
-                  >
-                    Tất cả địa điểm
-                  </button>
-                  @for (location of popularLocations; track location.value) {
-                    <button
-                      (click)="selectLocationAndClose(location.value)"
-                      [class]="selectedLocation() === location.value ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-100'"
-                      class="w-full text-left px-3 py-2 text-sm rounded flex items-center justify-between"
-                    >
-                      <span>{{ location.label }}</span>
-                      @if (selectedLocation() === location.value) {
-                        <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                        </svg>
-                      }
-                    </button>
+            <div
+              class="absolute top-full left-0 mt-2 w-64 origin-top-left bg-white border border-gray-200 rounded-lg shadow-xl z-[9999] min-w-max"
+            >
+              <div class="p-2 max-h-64 overflow-y-auto custom-scrollbar">
+                <button
+                  (click)="selectLocationAndClose('')"
+                  class="w-full text-left px-3 py-2 text-sm hover:bg-gray-100 rounded"
+                >
+                  Tất cả địa điểm
+                </button>
+                @for (location of popularLocations; track location.value) {
+                <button
+                  (click)="selectLocationAndClose(location.value)"
+                  [class]="
+                    selectedLocation() === location.value
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'hover:bg-gray-100'
+                  "
+                  class="w-full text-left px-3 py-2 text-sm rounded flex items-center justify-between"
+                >
+                  <span>{{ location.label }}</span>
+                  @if (selectedLocation() === location.value) {
+                  <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                  </svg>
                   }
-                </div>
+                </button>
+                }
               </div>
+            </div>
             }
           </div>
 
@@ -397,64 +548,102 @@
               class="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-gray-700 whitespace-nowrap"
             >
               <span class="text-lg">💰</span>
-              <span class="text-sm">{{ selectedSalary() ? getSalaryLabel(selectedSalary()) : 'Mức lương' }}</span>
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              <span class="text-sm">{{
+                selectedSalary() ? getSalaryLabel(selectedSalary()) : 'Mức lương'
+              }}</span>
+              <svg
+                class="w-4 h-4 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </button>
             @if (showSalaryDropdown()) {
-              <div class="absolute top-full left-0 mt-2 w-64 origin-top-left bg-white border border-gray-200 rounded-lg shadow-xl z-[9999] min-w-max">
-                <div class="p-2 max-h-64 overflow-y-auto custom-scrollbar">
-                  <button
-                    (click)="selectSalaryAndClose('')"
-                    class="w-full text-left px-3 py-2 text-sm hover:bg-gray-100 rounded"
-                  >
-                    Tất cả mức lương
-                  </button>
-                  <button
-                    (click)="selectSalaryAndClose('duoi-10')"
-                    [class]="selectedSalary() === 'duoi-10' ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-100'"
-                    class="w-full text-left px-3 py-2 text-sm rounded"
-                  >
-                    Dưới 10 triệu
-                  </button>
-                  <button
-                    (click)="selectSalaryAndClose('10-15')"
-                    [class]="selectedSalary() === '10-15' ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-100'"
-                    class="w-full text-left px-3 py-2 text-sm rounded"
-                  >
-                    10 - 15 triệu
-                  </button>
-                  <button
-                    (click)="selectSalaryAndClose('15-20')"
-                    [class]="selectedSalary() === '15-20' ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-100'"
-                    class="w-full text-left px-3 py-2 text-sm rounded"
-                  >
-                    15 - 20 triệu
-                  </button>
-                  <button
-                    (click)="selectSalaryAndClose('20-30')"
-                    [class]="selectedSalary() === '20-30' ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-100'"
-                    class="w-full text-left px-3 py-2 text-sm rounded"
-                  >
-                    20 - 30 triệu
-                  </button>
-                  <button
-                    (click)="selectSalaryAndClose('tren-30')"
-                    [class]="selectedSalary() === 'tren-30' ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-100'"
-                    class="w-full text-left px-3 py-2 text-sm rounded"
-                  >
-                    Trên 30 triệu
-                  </button>
-                  <button
-                    (click)="selectSalaryAndClose('thuong-luong')"
-                    [class]="selectedSalary() === 'thuong-luong' ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-100'"
-                    class="w-full text-left px-3 py-2 text-sm rounded"
-                  >
-                    Thỏa thuận
-                  </button>
-                </div>
+            <div
+              class="absolute top-full left-0 mt-2 w-64 origin-top-left bg-white border border-gray-200 rounded-lg shadow-xl z-[9999] min-w-max"
+            >
+              <div class="p-2 max-h-64 overflow-y-auto custom-scrollbar">
+                <button
+                  (click)="selectSalaryAndClose('')"
+                  class="w-full text-left px-3 py-2 text-sm hover:bg-gray-100 rounded"
+                >
+                  Tất cả mức lương
+                </button>
+                <button
+                  (click)="selectSalaryAndClose('duoi-10')"
+                  [class]="
+                    selectedSalary() === 'duoi-10'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'hover:bg-gray-100'
+                  "
+                  class="w-full text-left px-3 py-2 text-sm rounded"
+                >
+                  Dưới 10 triệu
+                </button>
+                <button
+                  (click)="selectSalaryAndClose('10-15')"
+                  [class]="
+                    selectedSalary() === '10-15'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'hover:bg-gray-100'
+                  "
+                  class="w-full text-left px-3 py-2 text-sm rounded"
+                >
+                  10 - 15 triệu
+                </button>
+                <button
+                  (click)="selectSalaryAndClose('15-20')"
+                  [class]="
+                    selectedSalary() === '15-20'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'hover:bg-gray-100'
+                  "
+                  class="w-full text-left px-3 py-2 text-sm rounded"
+                >
+                  15 - 20 triệu
+                </button>
+                <button
+                  (click)="selectSalaryAndClose('20-30')"
+                  [class]="
+                    selectedSalary() === '20-30'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'hover:bg-gray-100'
+                  "
+                  class="w-full text-left px-3 py-2 text-sm rounded"
+                >
+                  20 - 30 triệu
+                </button>
+                <button
+                  (click)="selectSalaryAndClose('tren-30')"
+                  [class]="
+                    selectedSalary() === 'tren-30'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'hover:bg-gray-100'
+                  "
+                  class="w-full text-left px-3 py-2 text-sm rounded"
+                >
+                  Trên 30 triệu
+                </button>
+                <button
+                  (click)="selectSalaryAndClose('thuong-luong')"
+                  [class]="
+                    selectedSalary() === 'thuong-luong'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'hover:bg-gray-100'
+                  "
+                  class="w-full text-left px-3 py-2 text-sm rounded"
+                >
+                  Thỏa thuận
+                </button>
               </div>
+            </div>
             }
           </div>
 
@@ -465,57 +654,91 @@
               class="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-gray-700 whitespace-nowrap"
             >
               <span class="text-lg">🎯</span>
-              <span class="text-sm">{{ selectedExperience() ? getExperienceLabel(selectedExperience()) : 'Kinh nghiệm' }}</span>
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              <span class="text-sm">{{
+                selectedExperience() ? getExperienceLabel(selectedExperience()) : 'Kinh nghiệm'
+              }}</span>
+              <svg
+                class="w-4 h-4 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </button>
             @if (showExperienceDropdown()) {
-              <div class="absolute top-full left-0 mt-2 w-64 origin-top-left bg-white border border-gray-200 rounded-lg shadow-xl z-[9999] min-w-max">
-                <div class="p-2 max-h-64 overflow-y-auto custom-scrollbar">
-                  <button
-                    (click)="selectExperienceAndClose('')"
-                    class="w-full text-left px-3 py-2 text-sm hover:bg-gray-100 rounded"
-                  >
-                    Tất cả kinh nghiệm
-                  </button>
-                  <button
-                    (click)="selectExperienceAndClose('intern')"
-                    [class]="selectedExperience() === 'intern' ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-100'"
-                    class="w-full text-left px-3 py-2 text-sm rounded"
-                  >
-                    Thực tập sinh
-                  </button>
-                  <button
-                    (click)="selectExperienceAndClose('fresher')"
-                    [class]="selectedExperience() === 'fresher' ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-100'"
-                    class="w-full text-left px-3 py-2 text-sm rounded"
-                  >
-                    Mới tốt nghiệp (Fresher)
-                  </button>
-                  <button
-                    (click)="selectExperienceAndClose('1-2-nam')"
-                    [class]="selectedExperience() === '1-2-nam' ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-100'"
-                    class="w-full text-left px-3 py-2 text-sm rounded"
-                  >
-                    1 - 2 năm kinh nghiệm
-                  </button>
-                  <button
-                    (click)="selectExperienceAndClose('2-5-nam')"
-                    [class]="selectedExperience() === '2-5-nam' ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-100'"
-                    class="w-full text-left px-3 py-2 text-sm rounded"
-                  >
-                    2 - 5 năm kinh nghiệm
-                  </button>
-                  <button
-                    (click)="selectExperienceAndClose('tren-5-nam')"
-                    [class]="selectedExperience() === 'tren-5-nam' ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-100'"
-                    class="w-full text-left px-3 py-2 text-sm rounded"
-                  >
-                    Trên 5 năm kinh nghiệm
-                  </button>
-                </div>
+            <div
+              class="absolute top-full left-0 mt-2 w-64 origin-top-left bg-white border border-gray-200 rounded-lg shadow-xl z-[9999] min-w-max"
+            >
+              <div class="p-2 max-h-64 overflow-y-auto custom-scrollbar">
+                <button
+                  (click)="selectExperienceAndClose('')"
+                  class="w-full text-left px-3 py-2 text-sm hover:bg-gray-100 rounded"
+                >
+                  Tất cả kinh nghiệm
+                </button>
+                <button
+                  (click)="selectExperienceAndClose('intern')"
+                  [class]="
+                    selectedExperience() === 'intern'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'hover:bg-gray-100'
+                  "
+                  class="w-full text-left px-3 py-2 text-sm rounded"
+                >
+                  Thực tập sinh
+                </button>
+                <button
+                  (click)="selectExperienceAndClose('fresher')"
+                  [class]="
+                    selectedExperience() === 'fresher'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'hover:bg-gray-100'
+                  "
+                  class="w-full text-left px-3 py-2 text-sm rounded"
+                >
+                  Mới tốt nghiệp (Fresher)
+                </button>
+                <button
+                  (click)="selectExperienceAndClose('1-2-nam')"
+                  [class]="
+                    selectedExperience() === '1-2-nam'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'hover:bg-gray-100'
+                  "
+                  class="w-full text-left px-3 py-2 text-sm rounded"
+                >
+                  1 - 2 năm kinh nghiệm
+                </button>
+                <button
+                  (click)="selectExperienceAndClose('2-5-nam')"
+                  [class]="
+                    selectedExperience() === '2-5-nam'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'hover:bg-gray-100'
+                  "
+                  class="w-full text-left px-3 py-2 text-sm rounded"
+                >
+                  2 - 5 năm kinh nghiệm
+                </button>
+                <button
+                  (click)="selectExperienceAndClose('tren-5-nam')"
+                  [class]="
+                    selectedExperience() === 'tren-5-nam'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'hover:bg-gray-100'
+                  "
+                  class="w-full text-left px-3 py-2 text-sm rounded"
+                >
+                  Trên 5 năm kinh nghiệm
+                </button>
               </div>
+            </div>
             }
           </div>
 
@@ -526,71 +749,113 @@
               class="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-gray-700 whitespace-nowrap"
             >
               <span class="text-lg">🏢</span>
-              <span class="text-sm">{{ selectedIndustry() ? getIndustryLabel(selectedIndustry()) : 'Ngành nghề' }}</span>
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              <span class="text-sm">{{
+                selectedIndustry() ? getIndustryLabel(selectedIndustry()) : 'Ngành nghề'
+              }}</span>
+              <svg
+                class="w-4 h-4 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </button>
             @if (showIndustryDropdown()) {
-              <div class="absolute top-full left-0 mt-2 w-64 origin-top-left bg-white border border-gray-200 rounded-lg shadow-xl z-[9999] min-w-max">
-                <div class="p-2 max-h-64 overflow-y-auto custom-scrollbar">
-                  <button
-                    (click)="selectIndustryAndClose('')"
-                    class="w-full text-left px-3 py-2 text-sm hover:bg-gray-100 rounded"
-                  >
-                    Tất cả ngành nghề
-                  </button>
-                  <button
-                    (click)="selectIndustryAndClose('it-software')"
-                    [class]="selectedIndustry() === 'it-software' ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-100'"
-                    class="w-full text-left px-3 py-2 text-sm rounded"
-                  >
-                    Công nghệ thông tin
-                  </button>
-                  <button
-                    (click)="selectIndustryAndClose('marketing')"
-                    [class]="selectedIndustry() === 'marketing' ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-100'"
-                    class="w-full text-left px-3 py-2 text-sm rounded"
-                  >
-                    Marketing / PR
-                  </button>
-                  <button
-                    (click)="selectIndustryAndClose('sales')"
-                    [class]="selectedIndustry() === 'sales' ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-100'"
-                    class="w-full text-left px-3 py-2 text-sm rounded"
-                  >
-                    Kinh doanh / Bán hàng
-                  </button>
-                  <button
-                    (click)="selectIndustryAndClose('accounting')"
-                    [class]="selectedIndustry() === 'accounting' ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-100'"
-                    class="w-full text-left px-3 py-2 text-sm rounded"
-                  >
-                    Kế toán / Kiểm toán
-                  </button>
-                  <button
-                    (click)="selectIndustryAndClose('hr')"
-                    [class]="selectedIndustry() === 'hr' ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-100'"
-                    class="w-full text-left px-3 py-2 text-sm rounded"
-                  >
-                    Nhân sự
-                  </button>
-                  <button
-                    (click)="selectIndustryAndClose('design')"
-                    [class]="selectedIndustry() === 'design' ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-100'"
-                    class="w-full text-left px-3 py-2 text-sm rounded"
-                  >
-                    Thiết kế đồ họa
-                  </button>
-                  <button
-                    (click)="selectIndustryAndClose('banking')"
-                    [class]="selectedIndustry() === 'banking' ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-100'"
-                    class="w-full text-left px-3 py-2 text-sm rounded"
-                  >
-                    Ngân hàng / Tài chính
-                  </button>
-                </div>
+            <div
+              class="absolute top-full left-0 mt-2 w-64 origin-top-left bg-white border border-gray-200 rounded-lg shadow-xl z-[9999] min-w-max"
+            >
+              <div class="p-2 max-h-64 overflow-y-auto custom-scrollbar">
+                <button
+                  (click)="selectIndustryAndClose('')"
+                  class="w-full text-left px-3 py-2 text-sm hover:bg-gray-100 rounded"
+                >
+                  Tất cả ngành nghề
+                </button>
+                <button
+                  (click)="selectIndustryAndClose('it-software')"
+                  [class]="
+                    selectedIndustry() === 'it-software'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'hover:bg-gray-100'
+                  "
+                  class="w-full text-left px-3 py-2 text-sm rounded"
+                >
+                  Công nghệ thông tin
+                </button>
+                <button
+                  (click)="selectIndustryAndClose('marketing')"
+                  [class]="
+                    selectedIndustry() === 'marketing'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'hover:bg-gray-100'
+                  "
+                  class="w-full text-left px-3 py-2 text-sm rounded"
+                >
+                  Marketing / PR
+                </button>
+                <button
+                  (click)="selectIndustryAndClose('sales')"
+                  [class]="
+                    selectedIndustry() === 'sales'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'hover:bg-gray-100'
+                  "
+                  class="w-full text-left px-3 py-2 text-sm rounded"
+                >
+                  Kinh doanh / Bán hàng
+                </button>
+                <button
+                  (click)="selectIndustryAndClose('accounting')"
+                  [class]="
+                    selectedIndustry() === 'accounting'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'hover:bg-gray-100'
+                  "
+                  class="w-full text-left px-3 py-2 text-sm rounded"
+                >
+                  Kế toán / Kiểm toán
+                </button>
+                <button
+                  (click)="selectIndustryAndClose('hr')"
+                  [class]="
+                    selectedIndustry() === 'hr'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'hover:bg-gray-100'
+                  "
+                  class="w-full text-left px-3 py-2 text-sm rounded"
+                >
+                  Nhân sự
+                </button>
+                <button
+                  (click)="selectIndustryAndClose('design')"
+                  [class]="
+                    selectedIndustry() === 'design'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'hover:bg-gray-100'
+                  "
+                  class="w-full text-left px-3 py-2 text-sm rounded"
+                >
+                  Thiết kế đồ họa
+                </button>
+                <button
+                  (click)="selectIndustryAndClose('banking')"
+                  [class]="
+                    selectedIndustry() === 'banking'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'hover:bg-gray-100'
+                  "
+                  class="w-full text-left px-3 py-2 text-sm rounded"
+                >
+                  Ngân hàng / Tài chính
+                </button>
               </div>
+            </div>
             }
           </div>
         </div>
@@ -600,106 +865,178 @@
     <!-- Job Cards Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
       @for (job of filteredJobs(); track job.id) {
-        <div class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-emerald-200 group cursor-pointer"
-             (click)="viewJobDetail(job)">
-          <div class="p-4 md:p-6">
-            <!-- Company Logo & Badge -->
-            <div class="flex items-start justify-between mb-3 md:mb-4">
-              <div class="flex items-center space-x-3 min-w-0 flex-1">
-                <div class="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span class="text-white font-bold text-sm md:text-lg">{{ job.company.charAt(0) }}</span>
-                </div>
-                <div class="min-w-0 flex-1">
-                  <h3 class="font-semibold text-gray-900 group-hover:text-emerald-600 transition-colors duration-200 text-sm md:text-base leading-tight"
-                      style="display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                    {{ job.title }}
-                  </h3>
-                  <p class="text-gray-600 text-xs md:text-sm truncate">{{ job.company }}</p>
-                </div>
+      <div
+        class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-emerald-200 group cursor-pointer"
+        (click)="viewJobDetail(job)"
+      >
+        <div class="p-4 md:p-6">
+          <!-- Company Logo & Badge -->
+          <div class="flex items-start justify-between mb-3 md:mb-4">
+            <div class="flex items-center space-x-3 min-w-0 flex-1">
+              <div
+                class="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center flex-shrink-0"
+              >
+                <span class="text-white font-bold text-sm md:text-lg">{{
+                  job.company.charAt(0)
+                }}</span>
               </div>
-              <div class="flex flex-col space-y-1 ml-2">
-                @if (job.isHot) {
-                  <span class="bg-red-100 text-red-600 text-xs font-medium px-2 py-1 rounded-full whitespace-nowrap">HOT</span>
-                }
-                @if (job.isPro) {
-                  <span class="bg-yellow-100 text-yellow-600 text-xs font-medium px-2 py-1 rounded-full whitespace-nowrap">PRO</span>
-                }
-              </div>
-            </div>
-
-            <!-- Job Details -->
-            <div class="space-y-2 mb-3 md:mb-4">
-              <div class="flex items-center space-x-2 text-gray-600 text-xs md:text-sm">
-                <svg class="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
-                </svg>
-                <span class="font-medium text-emerald-600">{{ job.salary }}</span>
-              </div>
-              <div class="flex items-center space-x-2 text-gray-600 text-xs md:text-sm">
-                <svg class="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
-                <span class="truncate">{{ job.location }}</span>
-              </div>
-              <div class="flex items-center space-x-2 text-gray-600 text-xs md:text-sm">
-                <svg class="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <span>{{ job.workType }}</span>
+              <div class="min-w-0 flex-1">
+                <h3
+                  class="font-semibold text-gray-900 group-hover:text-emerald-600 transition-colors duration-200 text-sm md:text-base leading-tight"
+                  style="
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                  "
+                >
+                  {{ job.title }}
+                </h3>
+                <p class="text-gray-600 text-xs md:text-sm truncate">{{ job.company }}</p>
               </div>
             </div>
-
-            <!-- Skills -->
-            <div class="flex flex-wrap gap-1 md:gap-2 mb-3 md:mb-4">
-              @for (skill of job.skills.slice(0, 2); track skill) {
-                <span class="bg-emerald-50 text-emerald-600 text-xs px-2 py-1 rounded-full">{{ skill }}</span>
+            <div class="flex flex-col space-y-1 ml-2">
+              @if (job.isHot) {
+              <span
+                class="bg-red-100 text-red-600 text-xs font-medium px-2 py-1 rounded-full whitespace-nowrap"
+                >HOT</span
+              >
+              } @if (job.isPro) {
+              <span
+                class="bg-yellow-100 text-yellow-600 text-xs font-medium px-2 py-1 rounded-full whitespace-nowrap"
+                >PRO</span
+              >
               }
-              @if (job.skills.length > 2) {
-                <span class="text-gray-400 text-xs">+{{ job.skills.length - 2 }}</span>
-              }
-            </div>
-
-            <!-- Footer -->
-            <div class="flex items-center justify-between text-xs md:text-sm text-gray-500 border-t pt-3 md:pt-4">
-              <span>{{ job.postedDate }}</span>
-              <button class="text-emerald-600 hover:text-emerald-700 font-medium px-3 py-1 rounded-lg hover:bg-emerald-50 transition-colors duration-200">
-                Ứng tuyển
-              </button>
             </div>
           </div>
+
+          <!-- Job Details -->
+          <div class="space-y-2 mb-3 md:mb-4">
+            <div class="flex items-center space-x-2 text-gray-600 text-xs md:text-sm">
+              <svg
+                class="w-3 h-3 md:w-4 md:h-4 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
+                />
+              </svg>
+              <span class="font-medium text-emerald-600">{{ job.salary }}</span>
+            </div>
+            <div class="flex items-center space-x-2 text-gray-600 text-xs md:text-sm">
+              <svg
+                class="w-3 h-3 md:w-4 md:h-4 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+              <span class="truncate">{{ job.location }}</span>
+            </div>
+            <div class="flex items-center space-x-2 text-gray-600 text-xs md:text-sm">
+              <svg
+                class="w-3 h-3 md:w-4 md:h-4 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>{{ job.workType }}</span>
+            </div>
+          </div>
+
+          <!-- Skills -->
+          <div class="flex flex-wrap gap-1 md:gap-2 mb-3 md:mb-4">
+            @for (skill of job.skills.slice(0, 2); track skill) {
+            <span class="bg-emerald-50 text-emerald-600 text-xs px-2 py-1 rounded-full">{{
+              skill
+            }}</span>
+            } @if (job.skills.length > 2) {
+            <span class="text-gray-400 text-xs">+{{ job.skills.length - 2 }}</span>
+            }
+          </div>
+
+          <!-- Footer -->
+          <div
+            class="flex items-center justify-between text-xs md:text-sm text-gray-500 border-t pt-3 md:pt-4"
+          >
+            <span>{{ job.postedDate }}</span>
+            <button
+              class="text-emerald-600 hover:text-emerald-700 font-medium px-3 py-1 rounded-lg hover:bg-emerald-50 transition-colors duration-200"
+            >
+              Ứng tuyển
+            </button>
+          </div>
         </div>
+      </div>
       }
     </div>
 
     <!-- Mobile: "Xem tất cả" button -->
     <div class="md:hidden mt-6 text-center">
-      <button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 px-6 rounded-lg font-medium transition-colors duration-200">
+      <button
+        class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 px-6 rounded-lg font-medium transition-colors duration-200"
+      >
         Xem tất cả việc làm
       </button>
     </div>
 
     <!-- Load More -->
     @if (hasMoreJobs()) {
-      <div class="text-center mt-8 md:mt-12">
-        <button
-          (click)="loadMoreJobs()"
-          [disabled]="uiData.loadingMore"
-          class="bg-white border border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-6 md:px-8 py-2 md:py-3 rounded-lg font-medium md:font-semibold transition-colors duration-200 disabled:opacity-50 text-sm md:text-base"
-        >
-          @if (uiData.loadingMore) {
-            <div class="flex items-center justify-center space-x-2">
-              <svg class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              <span>Đang tải...</span>
-            </div>
-          } @else {
-            <span>Xem thêm việc làm</span>
-          }
-        </button>
-      </div>
+    <div class="text-center mt-8 md:mt-12">
+      <button
+        (click)="loadMoreJobs()"
+        [disabled]="uiData.loadingMore"
+        class="bg-white border border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-6 md:px-8 py-2 md:py-3 rounded-lg font-medium md:font-semibold transition-colors duration-200 disabled:opacity-50 text-sm md:text-base"
+      >
+        @if (uiData.loadingMore) {
+        <div class="flex items-center justify-center space-x-2">
+          <svg class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
+          </svg>
+          <span>Đang tải...</span>
+        </div>
+        } @else {
+        <span>Xem thêm việc làm</span>
+        }
+      </button>
+    </div>
     }
   </div>
 </section>
